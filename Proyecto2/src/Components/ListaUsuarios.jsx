@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { getUsuarios } from '../Repositorios/apiServer'
+import { useNavigate } from "react-router-dom";
 
 export default function ListaUsuarios(props){
     const [users, setUsers] = useState([])
+    const navigate = useNavigate();
 
     async function handleUpdateUsersList(){
         const usuarios  = await getUsuarios()
         setUsers(usuarios); 
+        setTimeout(()=> {
+            navigate('/about')
+        }, 2000)
     }
 
     const listItems = users.map(user =>
