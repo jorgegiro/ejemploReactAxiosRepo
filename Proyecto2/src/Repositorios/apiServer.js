@@ -38,3 +38,8 @@ export async function crearUsuario({nombre, email, telefono}){
 
     return resp.data;
 }
+
+export async function findUser(email){
+  const resp = await axios.get(`https://jsonplaceholder.typicode.com/users?email=${email}`)
+    return resp.data!= null && resp.data.length > 0 ?  resp.data[0] : null;
+}
